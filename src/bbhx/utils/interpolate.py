@@ -67,7 +67,7 @@ class CubicSplineInterpolant(BBHxParallelModule):
         length (int, optional): If ``x`` and ``y_all`` are flattened,
             the user must provide the length of the frequency array for each binary.
             (Default: ``None``)
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"'', ``"cuda12x"'', or ``"cuda11x"''.
 
     Raises:
         ValueError: If input arguments are not correct.

@@ -48,7 +48,7 @@ class Likelihood(BBHxParallelModule):
             2D array of shape: ``(3, len(data_freqs))``.
             It is assumed there are 3 channels. ``psd``
             should be a numpy (cupy) array if running on the CPU (GPU).
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"'', ``"cuda12x"'', or ``"cuda11x"''.
 
     Attributes:
         d_d (double): :math:`\\langle d|d\\rangle` inner product value.
@@ -277,7 +277,7 @@ class HeterodynedLikelihood(BBHxParallelModule):
             (Default: ``{}``)
         sens_mat (SensitivityMatrix, optional): :class:`SensitivityMatrix` object representing the AET channels.
             If ``None``, defaults to class:`AET1SensitivityMatrix`. (default: ``None``)
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"'', ``"cuda12x"'', or ``"cuda11x"''.
 
     Attributes:
         reference_d_d (double): :math:`\\langle d|d\\rangle` inner product value.

@@ -41,7 +41,7 @@ class PhenomHMAmpPhase(BBHxParallelModule):
     `arXiv:1508.07253 <https://arxiv.org/abs/1508.07253>_.
 
     Args:
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"'', ``"cuda12x"'', or ``"cuda11x"''.
         run_phenomd (bool, optional): If ``True``, run the PhenomD
             waveform rather than PhenomHM. Really this is the same
             as choosing ``modes=[(2,2)]`` in the PhenomHM waveform.

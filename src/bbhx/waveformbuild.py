@@ -42,7 +42,7 @@ class TemplateInterpFD(BBHxParallelModule):
     This class has GPU capabilities.
 
     Args:
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"'', ``"cuda12x"'', or ``"cuda11x"''.
 
     Attributes:
         data_length (int): Length of data. This class interpolates to this length.
@@ -271,7 +271,7 @@ class BBHWaveformFD(BBHxParallelModule):
             of the response class: :class:`LISATDIResponse <bbhx.response.fastfdresponse.LISATDIResponse`.
         interp_kwargs (dict, optional): Keyword arguments for the initialization
             of the interpolation class: :class:`TemplateInterpFD`.
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"'', ``"cuda12x"'', or ``"cuda11x"''.
 
     Attributes:
         amp_phase_gen (obj): Waveform generation class.

@@ -7,7 +7,7 @@ import abc
 from typing import Optional, Sequence, TypeVar, Union
 from ..utils.exceptions import *
 
-from gpubackendtools.gpubackendtools import BackendMethods, CpuBackend, Cuda11xBackend, Cuda12xBackend
+from gpubackendtools.gpubackendtools import BackendMethods, CpuBackend, Cuda11xBackend, Cuda12xBackend, Cuda13xBackend
 from gpubackendtools.exceptions import *
 
 @dataclasses.dataclass
@@ -175,6 +175,49 @@ class BBHxCuda12xBackend(Cuda12xBackend, BBHxBackend):
             xp=cupy,
         )
 
+class BBHxCuda13xBackend(Cuda13xBackend, BBHxBackend):
+    """Implementation of CUDA 13.x backend"""
+    _backend_name : str = "bbhx_backend_cuda13x"
+    _name = "bbhx_cuda13x"
+    
+    def __init__(self, *args, **kwargs):
+        Cuda13xBackend.__init__(self, *args, **kwargs)
+        BBHxBackend.__init__(self, self.cuda13x_module_loader())
+        
+    @staticmethod
+    def cuda13x_module_loader():
+        try:
+            import bbhx_backend_cuda13x.likelihood
+            import bbhx_backend_cuda13x.waveformbuild
+            import bbhx_backend_cuda13x.response
+            import bbhx_backend_cuda13x.phenomhm
+            import bbhx_backend_cuda13x.interp
+
+        except (ModuleNotFoundError, ImportError) as e:
+            raise BackendUnavailableException(
+                "'cuda13x' backend could not be imported."
+            ) from e
+
+        try:
+            import cupy
+        except (ModuleNotFoundError, ImportError) as e:
+            raise MissingDependencies(
+                "'cuda13x' backend requires cupy", pip_deps=["cupy-cuda13x"]
+            ) from e
+
+        return BBHxBackendMethods(
+            hdyn_wrap=bbhx_backend_cuda13x.likelihood.hdyn_wrap,
+            direct_like_wrap=bbhx_backend_cuda13x.likelihood.direct_like_wrap,
+            direct_sum_wrap=bbhx_backend_cuda13x.waveformbuild.direct_sum_wrap,
+            InterpTDI_wrap=bbhx_backend_cuda13x.waveformbuild.InterpTDI_wrap,
+            pyFastLISAResponse=bbhx_backend_cuda13x.response.pyFastLISAResponse,
+            waveform_amp_phase_wrap=bbhx_backend_cuda13x.phenomhm.waveform_amp_phase_wrap,
+            get_phenomhm_ringdown_frequencies=bbhx_backend_cuda13x.phenomhm.get_phenomhm_ringdown_frequencies,
+            get_phenomd_ringdown_frequencies=bbhx_backend_cuda13x.phenomhm.get_phenomd_ringdown_frequencies,
+            interpolate_wrap=bbhx_backend_cuda13x.interp.interpolate_wrap,
+            xp=cupy,
+        )
+        
 """List of existing backends, per default order of preference."""
 # TODO: __all__ ?
 

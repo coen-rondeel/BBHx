@@ -48,7 +48,7 @@ class LISATDIResponse(BBHxParallelModule):
         order_fresnel_stencil (int, optional): Order of the Fresnel stencil in the
             response. Currently, anything above 0 is not implemented. This is left
             in for future compatibility. (Default: ``0``)
-        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda12x"'', or ``"cuda11x"''.
+        force_backend (str, optional): ``"cpu"'', ``"gpu"'', ``"cuda"'', ``"cuda13x"``, ``"cuda12x"'', or ``"cuda11x"''.
 
     Attributes:
         allowable_modes (list): Allowed list of mode tuple pairs ``(l,m)`` for

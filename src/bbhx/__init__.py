@@ -31,12 +31,13 @@ except (ModuleNotFoundError, ImportError):
 from . import cutils, utils
 
 from gpubackendtools import Globals
-from .cutils import BBHxCpuBackend, BBHxCuda11xBackend, BBHxCuda12xBackend
+from .cutils import BBHxCpuBackend, BBHxCuda11xBackend, BBHxCuda12xBackend, BBHxCuda13xBackend
 
 add_backends = {
     "bbhx_cpu": BBHxCpuBackend,
     "bbhx_cuda11x": BBHxCuda11xBackend,
     "bbhx_cuda12x": BBHxCuda12xBackend,
+    "bbhx_cuda13x": BBHxCuda13xBackend,
 }
 
 Globals().backends_manager.add_backends(add_backends)
